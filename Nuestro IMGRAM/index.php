@@ -79,7 +79,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
             <input type="text" placeholder="Usuario" class="input" name="usuario" />
             <div class="overlap-text">
               <input type="password" placeholder="Contraseña" class="input" name="password" />
-              <a href="#">He olvidado la contraseña.</a>
+              <a href="#">Quiero restablecer mi contraseña.</a>
             </div>
             <input type="submit" value="Entrar" class="btn" name="entrar" />
           </form>
