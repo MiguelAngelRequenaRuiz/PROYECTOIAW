@@ -8,12 +8,16 @@
 </head>
  
 <body>
-
+<!-- MEJOR CREAR NUEVOS ID Y CLASS PARA CSS EN ESTA ZONA,
+PORQUE AL HABER EDITADO LAS IMGS EN INDEX ESTO SE HA JODIDO
+UN POCO XD
+TENGO QUE HACER COSAS DE FRANCÉS YA SI LO VES Y TE HACE
+LO TOCAS TÚ -->
 <div id="principal">
   
   <div class="contenido">
     <div class="header">
-      <img src="imagenes/logo.png" />
+      <img src="imagenes/imgramlogo.png" />
     </div>
     <form action="" method="post">
     <div class="pizq">
