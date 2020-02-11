@@ -17,7 +17,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
   <div id="principal">
 
-    <div class="pizq"><img src="imagenes/movil.png"></div>
+    <div class="pizq"><img src="imagenes/iconomovil.png"></div>
 
     <div class="pder">
 
@@ -88,7 +88,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
       <div class="contenidobajo">
         <div class="partebaja">
-          ¿Oye, no tienes cuenta? <a href="registro.php">Regístrate ahora gratis.</a>
+          ¿Oye, no tienes cuenta? </br><a href="registro.php">Regístrate gratis</a>
         </div>
       </div>
 
