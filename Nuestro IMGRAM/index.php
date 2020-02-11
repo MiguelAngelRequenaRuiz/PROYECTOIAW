@@ -72,7 +72,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
       <div class="contenido">
         <div class="header">
-          <img src="imagenes/logo.png">
+          <img src="imagenes/imgramlogo.png">
         </div>
         <div class="l-part">
           <form action="" method="post">

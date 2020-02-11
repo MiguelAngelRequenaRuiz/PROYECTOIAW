@@ -42,9 +42,8 @@ body {
 .header img {
   height: 50px;
   width: 175px;
-  margin: auto;
+  margin-right: -30px;
   position: relative;
-  left: 40px;
 }
 
 .input {
