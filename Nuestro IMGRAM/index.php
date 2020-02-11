@@ -93,10 +93,10 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
       </div>
 
       <center><img src="imagenes/appstores.png"></center>
-
     </div>
 
   </div>
+  <footer id="footer">Diseñado por Christian Sosa y Miguel Requena</footer>
 
 </body>
 </html>
