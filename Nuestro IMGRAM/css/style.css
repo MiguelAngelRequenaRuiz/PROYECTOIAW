@@ -20,7 +20,7 @@ body {
   float: left;
   text-align: right;
 }
-
+/* Estas dos líneas son para que el div del inicio se mantenga en la derecha */
 .pder {
   width: 50%;
   float: right;
