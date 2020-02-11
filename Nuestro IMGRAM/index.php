@@ -74,10 +74,10 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         <div class="header">
           <img src="imagenes/imgramlogo.png">
         </div>
-        <div class="l-part">
+        <div class="formulario">
           <form action="" method="post">
             <input type="text" placeholder="Usuario" class="input" name="usuario" />
-            <div class="overlap-text">
+            <div class="subform">
               <input type="password" placeholder="Contraseña" class="input" name="password" />
               <a href="#">Quiero restablecer mi contraseña.</a>
             </div>
