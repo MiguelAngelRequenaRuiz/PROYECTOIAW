@@ -88,7 +88,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
       <div class="contenidobajo">
         <div class="partebaja">
-          ¿Oye, no tienes cuenta? </br><a href="registro.php">Regístrate gratis</a>
+          ¿Oye, no tienes cuenta? </br><a href="registro.html">Regístrate gratis</a>
         </div>
       </div>
 
