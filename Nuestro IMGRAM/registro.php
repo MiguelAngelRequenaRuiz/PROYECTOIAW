@@ -31,6 +31,12 @@ LO TOCAS TÚ -->
       <div class="texto">
         <input type="password" placeholder="Contraseña" class="input" />
       </div>
+      <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Acepto los términos.
+      </label>
+    </div>
       <input type="button" value="Registrarte" class="boton" />
     </div>
     </form>
