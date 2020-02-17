@@ -15,21 +15,22 @@
     <div class="cabecera-reg">
       <img src="imagenes/imgramlogo.png" />
     </div>
-
-    <form action="registro.php" method="post">
+    
+    <form action="registro.php" method="post" id="registro" name="registro">
     <div class="l-part">
-      <input type="text" placeholder="Correo electrónico" class=entrada-reg />
+      <input type="email" placeholder="Correo electrónico" class=entrada-reg id="correo" name="correo" />
       <div class="sobretexto">
-        <input type="text" placeholder="Nombre completo" class=entrada-reg />
+        <input type="text" placeholder="Nombre completo" class=entrada-reg id="nombre" name="nombre" />
       </div>
       <div class="sobretexto">
-        <input type="text" placeholder="Usuario" class=entrada-reg />
+        <input type="text" placeholder="Usuario" class=entrada-reg id="usuario" name="usuario" />
       </div>
       <div class="sobretexto">
-        <input type="password" placeholder="Contraseña" class=entrada-reg />
+        <input type="password" placeholder="Contraseña" class=entrada-reg id="contrasena" name="contrasena"/>
       </div>
-      <input type="button" value="Registrarte" class="boton-reg" />
+      <button class="boton-reg">Registrarse</button>
     </div>
+    </form>
   </div>
   <div class="bajotexto">
     <div class="s-parte">

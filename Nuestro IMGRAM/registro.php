@@ -1,53 +1,28 @@
 <?php
-$db_host="localhost";
-$db_user="nombre_de_usuario";
-$db_password="contraseña";
-$db_name="nombre_de_base_de_datos";
-$db_table_name="nombre_de_tabla";
-   $db_connection = mysql_connect($db_host, $db_user, $db_password);
-
-if (!$db_connection) {
-	die('No se ha podido conectar a la base de datos');
-}
-$subs_name = utf8_decode($_POST['nombre']);
-$subs_last = utf8_decode($_POST['apellido']);
-$subs_email = utf8_decode($_POST['email']);
-
-$resultado=mysql_query("SELECT * FROM ".$db_table_name." WHERE Email = '".$subs_email."'", $db_connection);
-
-if (mysql_num_rows($resultado)>0)
-{
-
-header('Location: Fail.html');
-
-} else {
-	
-	$insert_value = 'INSERT INTO `' . $db_name . '`.`'.$db_table_name.'` (`Nombre` , `Apellido` , `Email`) VALUES ("' . $subs_name . '", "' . $subs_last . '", "' . $subs_email . '")';
-
-mysql_select_db($db_name, $db_connection);
-$retry_value = mysql_query($insert_value, $db_connection);
-
-if (!$retry_value) {
-   die('Error: ' . mysql_error());
-}
-	
-header('Location: Success.html');
-}
-
-mysql_close($db_connection);
-
-/*---------------------------------------------------------------------------------------*/
 
     $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
-    $contrasena = trim(htmlspecialchars($_REQUEST["contraseña"], ENT_QUOTES, "UTF-8"));
+    $correo = trim(htmlspecialchars($_REQUEST["correo"], ENT_QUOTES, "UTF-8"));
+    $nombre = trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8"));
+    $contrasena_req = trim(htmlspecialchars($_REQUEST["contrasena"], ENT_QUOTES, "UTF-8"));
+    $contrasena = '';
+    $contrasena_hash = hash('sha256',  $contrasena_req . hash('sha256', $contrasena .  $contrasena_req));
 
-    $conexion = mysqli_connect("localhost", "root", "", "estacion")
+    $conexion = mysqli_connect("localhost", "admin", "", "mysql") 
     or die("Problemas en la conexion");
     
-    $consulta = "SELECT * FROM administradores WHERE Usuario='$usuario' AND Contrasena='$contrasena'";
+    $insercion = "INSERT INTO usuarios (usuario, contrasena, correo, nombre)
+                  VALUES ($usuario, $contrasena, $correo, $nombre)";
     
-    $registros = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
+    $registros = mysqli_query($conexion, $insercion) or die(mysqli_error($conexion));
     $count = mysqli_num_rows($registros);
+
+    if (mysqli_query($conexion, $insercion)) {
+      echo "Los datos han sido guardados correctamente";
+    } else {
+          echo "Error: " . $insercion . "<br>" . mysqli_error($conexion);
+    }
+
+    /*
     if ($count != 1) {
         header('location: inicio.php?error=Usuario o Contraseña Incorrecta');
     } else {
@@ -55,7 +30,8 @@ mysql_close($db_connection);
         $_SESSION['nombreUsuario'] = $usuario; 
         $_SESSION['estado'] = 'Autenticado';
         header('location: administracion.php');
+    }
+    */
         
-    mysql_close($db_connection);
-
+    mysqli_close($conexion);
 ?>
