@@ -15,7 +15,7 @@ session_start();
   </head>
   <body>
    <div id="cuerpo">
-    <h1>Carrete</h1>
+    <h1>Imágenes</h1>
 </br>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
