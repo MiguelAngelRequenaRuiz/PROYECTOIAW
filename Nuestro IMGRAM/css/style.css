@@ -189,6 +189,11 @@ home y home admin, div principal
 .cuerpo {
 align-content: center;
 }
+/* RESPONSIVE*/
+.carousel-inner {
+max-width: 100%; 
+height: auto;
+}
 .cuerpo h1 {
   text-align: center;
 }
