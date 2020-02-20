@@ -9,7 +9,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 <head>
   <title>IMGram</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
  
@@ -76,23 +76,24 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         </div>
         <div class="formulario">
           <form action="" method="post">
-            <input type="text" placeholder="Usuario" class="input" name="usuario" />
+            <input type="text" placeholder="Usuario" class="input" name="usuario" required />
             <div class="subform">
-              <input type="password" placeholder="Contraseña" class="input" name="password" />
-              <a href="#">Quiero restablecer mi contraseña.</a>
+              <input type="password" placeholder="Contraseña" class="input" name="password" required/>
+              <input type="submit" value="Entrar" class="boton-reg" name="entrar" />
+              <a href="#">He olvidado mi contraseña</a>
             </div>
-            <input type="submit" value="Entrar" class="btn" name="entrar" />
+            
           </form>
         </div>
       </div>
 
       <div class="contenidobajo">
         <div class="partebaja">
-          ¿Oye, no tienes cuenta? </br><a href="registro.html">Regístrate gratis</a>
+          <p style="margin-left:25%" >¿Oye, no tienes cuenta? </br><a href="registro.html">Regístrate gratis</a></p>
         </div>
       </div>
 
-      <center><img src="imagenes/appstores.png"></center>
+      <div class="plataformas"><img src="imagenes/appstores.png"></div>
     </div>
 
   </div>
