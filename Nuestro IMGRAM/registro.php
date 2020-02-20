@@ -44,7 +44,9 @@
     //$registros = mysqli_query($conexion, $insercion) or die(mysqli_error($conexion));
 
     if (mysqli_query($conexion, $insercion)) {
-      echo "Los datos han sido guardados correctamente";
+      echo "<p>"."El registro se ha realizado de forma exitosa"."</p>";
+      echo "<p>"."Pinche " . "<a href='index.php'>"."AQUI". "</a>"." para volver a la página principal"."</p>";
+
     } else {
           echo "Error: " . $insercion . "<br>" . mysqli_error($conexion);
     }
