@@ -84,7 +84,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="formedit.php" method="post">
+				<form action="editardatos.php" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Usuario" id="usuario" name="usuario" value="<?php 
 								session_start();
@@ -95,7 +95,7 @@
 						<input type="password" class="form-control" placeholder="Contraseña" id="contrasena" name="contrasena" required="required">
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Email" id="email" name="email" required="required">
+						<input type="email" class="form-control" placeholder="Email" id="correo" name="correo" required="required">
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Iniciar Sesión">
