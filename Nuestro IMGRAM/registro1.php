@@ -16,7 +16,7 @@
       <img src="imagenes/imgramlogo.png" />
     </div>
     
-    <form action="registro.php" method="post" id="registro" name="registro">
+    <form action="registro2.php" method="post" id="registro" name="registro">
     <div class="l-part">
       <input type="email" placeholder="Correo electrónico" class=entrada-reg id="correo" name="correo" />
       <div class="sobretexto">
@@ -24,6 +24,11 @@
       </div>
       <div class="sobretexto">
         <input type="text" placeholder="Usuario" class=entrada-reg id="usuario" name="usuario" />
+        <?php
+                if (isset($_REQUEST["error"])) {
+                    print "<p style='color: red'> $_REQUEST[error] </p>";
+                }
+				?>
       </div>
       <div class="sobretexto">
         <input type="password" placeholder="Contraseña" class=entrada-reg id="contrasena" name="contrasena"/>

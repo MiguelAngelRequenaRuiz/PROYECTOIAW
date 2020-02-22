@@ -21,12 +21,6 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
     <div class="pder">
 
-      <?php 
-      if(isset($_GET['error'])) {
-        echo "<center>Error: Usuario o contraseña incorrecta.</center>";
-      }
-      ?>
-
       <?php
       if(isset($_POST['entrar'])) {
 
@@ -60,7 +54,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
           else {
 
-            Header("Location: index.php?error=login");
+            Header("Location: index.php?error=Usuario o contraseña incorrectos.");
 
           }
 
@@ -80,6 +74,12 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
             <div class="subform">
               <input type="password" placeholder="Contraseña" class="input" name="password" required/>
               <input type="submit" value="Entrar" class="boton-reg" name="entrar" />
+              <?php 
+                  if(isset($_GET['error'])) {
+                    print "<p style='color: red'> $_REQUEST[error] </p>";
+                  }
+              ?>
+              </br>
               <a href="#">He olvidado mi contraseña</a>
             </div>
             
@@ -89,7 +89,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
       <div class="contenidobajo">
         <div class="partebaja">
-          <p style="margin-left:25%" >¿Oye, no tienes cuenta? </br><a href="registro.html">Regístrate gratis</a></p>
+          <p style="margin-left:25%" >¿Oye, no tienes cuenta? </br><a href="registro1.php">Regístrate gratis</a></p>
         </div>
       </div>
 
