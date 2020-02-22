@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2020 a las 13:02:27
+-- Servidor: localhost
+-- Tiempo de generación: 22-02-2020 a las 16:30:30
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -51,6 +51,17 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `nombre_completo`, `contrasena`) VALUES
+(22, 'prueba', 'prueba@gmail.com', 'prueba prueba', ''),
+(30, 'pepe', 'admin@gmail.com', 'pepe', ''),
+(32, 'pepe1', 'pepe@gmail.com', 'pepe', ''),
+(33, 'sfsdadas', 'dad@sada.es', '', ''),
+(35, 'prueba123', 'prueba@gmail.com', 'prueba prueba', '');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -65,7 +76,8 @@ ALTER TABLE `imagenes`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -81,7 +93,7 @@ ALTER TABLE `imagenes`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
