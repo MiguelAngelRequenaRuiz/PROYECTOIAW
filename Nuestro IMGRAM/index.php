@@ -79,8 +79,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
                     print "<p style='color: red'> $_REQUEST[error] </p>";
                   }
               ?>
-              </br>
-              <a href="recuperacion.php">He olvidado mi contraseña</a>
+              <a href="recuperacion.php"></br>He olvidado mi contraseña</a>
             </div>
             
           </form>
