@@ -80,7 +80,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
                   }
               ?>
               </br>
-              <a href="#">He olvidado mi contraseña</a>
+              <a href="recuperacion.php">He olvidado mi contraseña</a>
             </div>
             
           </form>
