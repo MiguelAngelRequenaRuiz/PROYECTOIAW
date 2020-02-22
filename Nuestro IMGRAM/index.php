@@ -45,22 +45,14 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         if(isset($username) && isset($password)) {
 
           if($username == $userok && $password == $passok) {
-
             session_start();
             $_SESSION['online'] = TRUE;
             header("Location: home.php");
-
           }
-
           else {
-
             Header("Location: index.php?error=Usuario o contraseña incorrectos.");
-
           }
-
         }
-
-
       }
       ?>
 
@@ -70,8 +62,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         </div>
         <div class="formulario">
           <form action="" method="post">
-            <input type="text" placeholder="Usuario" class="input" name="usuario" required />
-            <div class="subform">
+              <input type="text" placeholder="Usuario" class="input" name="usuario" required />
               <input type="password" placeholder="Contraseña" class="input" name="password" required/>
               <input type="submit" value="Entrar" class="boton-reg" name="entrar" />
               <?php 
@@ -80,7 +71,6 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
                   }
               ?>
               <a href="recuperacion.php"></br>He olvidado mi contraseña</a>
-            </div>
             
           </form>
         </div>

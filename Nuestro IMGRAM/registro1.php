@@ -18,12 +18,12 @@
     
     <form action="registro2.php" method="post" id="registro" name="registro">
     <div class="l-part">
-      <input type="email" placeholder="Correo electrónico" class=entrada-reg id="correo" name="correo" />
+      <input type="email" placeholder="Correo electrónico" class=entrada-reg id="correo" name="correo" required/>
       <div class="sobretexto">
-        <input type="text" placeholder="Nombre completo" class=entrada-reg id="nombre" name="nombre" />
+        <input type="text" placeholder="Nombre completo" class=entrada-reg id="nombre" name="nombre" required/>
       </div>
       <div class="sobretexto">
-        <input type="text" placeholder="Usuario" class=entrada-reg id="usuario" name="usuario" />
+        <input type="text" placeholder="Usuario" class=entrada-reg id="usuario" name="usuario" required/>
         <?php
                 if (isset($_REQUEST["error"])) {
                     print "<p style='color: red'> $_REQUEST[error] </p>";
@@ -31,7 +31,7 @@
 				?>
       </div>
       <div class="sobretexto">
-        <input type="password" placeholder="Contraseña" class=entrada-reg id="contrasena" name="contrasena"/>
+        <input type="password" placeholder="Contraseña" class=entrada-reg id="contrasena" name="contrasena" required/>
       </div>
       <button class="boton-reg">Registrarse</button>
     </div>
