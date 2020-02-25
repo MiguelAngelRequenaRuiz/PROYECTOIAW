@@ -29,7 +29,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         $user = $mysqli->real_escape_string($_POST['usuario']);
         $password = md5($_POST['password']);
 
-        $consulta = "SELECT nombre,contrasena FROM usuarios WHERE nombre = '$user' AND contrasena = '$password'";
+        $consulta = "SELECT nombre,contrasena_hash FROM usuarios WHERE nombre = '$user' AND contrasena_hash = '$password'";
 
         if($resultado = $mysqli->query($consulta)) {
           while($row = $resultado->fetch_array()) {
