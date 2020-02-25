@@ -24,14 +24,14 @@
             $nombre_completo = trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8"));
             $contrasena_req = trim(htmlspecialchars($_REQUEST["contrasena"], ENT_QUOTES, "UTF-8"));
             $contrasena = '';
-            $contrasena_hash = hash('sha256',  $contrasena_req . hash('sha256', $contrasena .  $contrasena_req));
+            $contrasena_hash = hash('sha256',  $contrasena_req);
 
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
             or die("Problemas en la conexion");
 
 
             $insercion = "INSERT INTO usuarios (nombre, contrasena, correo, nombre_completo)
-                                VALUES ('$nombre', '$contrasena', '$correo', '$nombre_completo')";
+                                VALUES ('$nombre', '$contrasena_hash', '$correo', '$nombre_completo')";
 
             if (mysqli_query($conexion, $insercion)) {
               echo "<p>"."El registro se ha realizado de forma exitosa"."</p>";
