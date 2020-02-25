@@ -26,15 +26,14 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
         require("conexion.php");
 
-        $username = $mysqli->real_escape_string($_POST['usuario']);
+        $user = $mysqli->real_escape_string($_POST['usuario']);
         $password = md5($_POST['password']);
-
-        $consulta = "SELECT username,password FROM users WHERE username = '$username' AND password = '$password'";
+        $consulta = "SELECT nombre,contrasena FROM usuarios WHERE nombre = '$user' AND contrasena = '$password'";
 
         if($resultado = $mysqli->query($consulta)) {
           while($row = $resultado->fetch_array()) {
 
-            $userok = $row['username'];
+            $userok = $row['usuario'];
             $passok = $row['password'];
           }
           $resultado->close();
@@ -42,15 +41,15 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         $mysqli->close();
 
 
-        if(isset($username) && isset($password)) {
+        if(isset($user) && isset($password)) {
 
-          if($username == $userok && $password == $passok) {
+          if($user == $userok && $password == $passok) {
             session_start();
             $_SESSION['online'] = TRUE;
             header("Location: home.php");
           }
           else {
-            Header("Location: index.php?error=Usuario o contraseña incorrectos.");
+            Header("Location: index.php?error=El usuario y la contraseña no coinciden.");
           }
         }
       }
