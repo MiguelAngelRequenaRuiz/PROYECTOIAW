@@ -38,7 +38,6 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
               <a href="recuperacion.php"></br>He olvidado mi contraseña</a>
           </form>
           <button type="submit" class="boton-reg" style="margin-top: 15px" OnClick="location.href='invitado.php'">Entrar como invitado</button>
-          <button type="submit" class="boton-reg" style="margin-top: 15px" OnClick="location.href='administrador.php'">Entrar como administrador</button>
         </div>
       </div>
 
