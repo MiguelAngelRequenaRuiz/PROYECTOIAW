@@ -22,7 +22,7 @@
                 session_start();
                 $_SESSION['usuario'] = $nombre;
                 $_SESSION['estado'] = 'autenticado';
-                header('location: home.php');
+                header('location: home_usuario.php');
             }
                 
             mysqli_close($conexion);

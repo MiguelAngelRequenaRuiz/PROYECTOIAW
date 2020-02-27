@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 22-02-2020 a las 16:30:30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-02-2020 a las 19:04:50
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -30,11 +30,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `imagenes` (
   `id` int(4) NOT NULL,
-  `usuario` varchar(30) NOT NULL,
+  `nombre_usuario` varchar(30) NOT NULL,
   `fecha` date NOT NULL,
-  `contrasena` varchar(400) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `imagen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`) VALUES
+(5, 'administrador', '2020-02-27', 'dadsasdads'),
+(6, 'administrador', '2020-02-27', 'adasadasdasd'),
+(8, 'pepe', '2020-02-27', 'sdadasdsadasdadssad');
 
 -- --------------------------------------------------------
 
@@ -55,11 +63,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `nombre_completo`, `contrasena`) VALUES
-(22, 'prueba', 'prueba@gmail.com', 'prueba prueba', ''),
-(30, 'pepe', 'admin@gmail.com', 'pepe', ''),
-(32, 'pepe1', 'pepe@gmail.com', 'pepe', ''),
-(33, 'sfsdadas', 'dad@sada.es', '', ''),
-(35, 'prueba123', 'prueba@gmail.com', 'prueba prueba', '');
+(39, 'prueba', 'admin@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(40, 'pepe', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(41, 'pepepep', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(42, 'administrador', 'admin@gmail.com', 'administrador', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(43, 'ANTONIO', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
 
 --
 -- Índices para tablas volcadas
@@ -70,7 +78,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `nombre_completo`, `contrasena
 --
 ALTER TABLE `imagenes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `nombre_usuario` (`nombre_usuario`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -87,13 +95,23 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD CONSTRAINT `nombre_usuario` FOREIGN KEY (`nombre_usuario`) REFERENCES `usuarios` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
