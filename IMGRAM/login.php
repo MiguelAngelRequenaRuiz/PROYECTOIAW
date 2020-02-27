@@ -25,20 +25,13 @@
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
             or die("Problemas en la conexion");
 
-            $consulta = "SELECT nombre, contrasena FROM usuarios WHERE nombre=$nombre AND contrasena=$contrasena_hash";
+            $consulta = "SELECT nombre, contrasena FROM usuarios WHERE nombre='$nombre' AND contrasena='$contrasena_hash'";
             $registros = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
             $contador = mysqli_num_rows($registros);
             if ($contador != 1) {
-                echo "error";
-            } if ($nombre == 'pepe') {
-              echo "<p>".$consulta['nombre'] ."</p>";
-              echo "<p>".$nombre ."</p>";
-              echo "<p>".$consulta['contrasena'] ."</p>";
-              echo "<p>".$contrasena_hash ."</p>";
-              echo "</br>";
+                header('location: index.php?error=Usuario o contraseña incorrectos');
             } else {
-                //header('location: registro1.php?error=El usuario ya existe, elija otro por favor');
-                echo "no funciona";
+                echo "funciona";
             }
                 
             mysqli_close($conexion);
