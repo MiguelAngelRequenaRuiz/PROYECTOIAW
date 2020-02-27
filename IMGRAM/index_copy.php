@@ -21,46 +21,12 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
     <div class="pder">
 
-      <?php
-      if(isset($_POST['entrar'])) {
-
-        require("conexion.php");
-
-        $user = $mysqli->real_escape_string($_POST['usuario']);
-        $password = md5($_POST['password']);
-        $consulta = "SELECT nombre,contrasena FROM usuarios WHERE nombre = '$user' AND contrasena = '$password'";
-
-        if($resultado = $mysqli->query($consulta)) {
-          while($row = $resultado->fetch_array()) {
-
-            $userok = $row['usuario'];
-            $passok = $row['password'];
-          }
-          $resultado->close();
-        }
-        $mysqli->close();
-
-
-        if(isset($user) && isset($password)) {
-
-          if($user == $userok && $password == $passok) {
-            session_start();
-            $_SESSION['online'] = TRUE;
-            header("Location: home.php");
-          }
-          else {
-            Header("Location: index.php?error=El usuario y la contraseña no coinciden.");
-          }
-        }
-      }
-      ?>
-
       <div class="contenido">
         <div class="header">
           <img src="imagenes/imgramlogo.png">
         </div>
         <div class="formulario">
-            <form action="" method="post">
+            <form action="login.php" method="post">
               <input type="text" placeholder="Usuario" class="input" name="usuario" id="usuario" required />
               <input type="password" placeholder="Contraseña" class="input" name="contrasena" id="contrasena" required/>
               <?php 
