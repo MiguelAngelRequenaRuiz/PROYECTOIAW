@@ -73,7 +73,7 @@ session_start();
 					<tr>
 						<td>
 							<div class="form-group">
-                    			<label style="color: white" for="fechasubida" >Fecha: </label>
+                    			<label style="color: black" for="fechasubida" >Fecha: </label>
                     			<input type="date" class="form-control" name="fechasubida" id="fechasubida">
 							</div>
 						</td>
@@ -86,7 +86,7 @@ session_start();
 					<tr>
 						<td>
 							<div class="form-group">
-                    			<label style="color: white" for="idusufoto">Usuario: </label>
+                    			<label style="color: black" for="idusufoto">Usuario: </label>
                     			<select name="idusufoto" id="idusufoto" class="form-control">
 							</div> 
 								<option value=""></option>
