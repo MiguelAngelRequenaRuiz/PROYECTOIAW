@@ -60,7 +60,7 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
           <img src="imagenes/imgramlogo.png">
         </div>
         <div class="formulario">
-            <form action="" method="post">
+            <form action="login.php" method="post">
 						<input type="text" class="input" placeholder="Usuario" id="usuario" name="usuario" required="required">
 						<input type="password" class="input" placeholder="Contraseña" id="contrasena" name="contrasena" required="required">
 
