@@ -68,7 +68,7 @@ session_start();
 			
 			<div style="position: relative; clear: both">
 			<br/><br/>
-            <form action="usulogued.php" method="post">
+            <form action="home_invitado.php" method="post">
 			<table style="border: 0px"class="table">
 					<tr>
 						<td>
