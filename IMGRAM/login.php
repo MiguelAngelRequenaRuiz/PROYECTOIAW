@@ -1,9 +1,11 @@
         <?php
+            session_unset();
+            session_destroy();
             $nombre = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
             $contrasena_req = trim(htmlspecialchars($_REQUEST["contrasena"], ENT_QUOTES, "UTF-8"));
             $contrasena_hash = hash('sha256',  $contrasena_req);
 
-            $conexion = mysqli_connect("localhost", "root", "", "requenasosa") 
+            $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
             or die("Problemas en la conexion");
 
             $consulta = "SELECT nombre, contrasena FROM usuarios WHERE nombre='$nombre' AND contrasena='$contrasena_hash'";
@@ -13,13 +15,13 @@
                 header('location: index.php?error=Usuario o contraseña incorrectos');
             } elseif ($nombre == 'administrador') {
                 session_start();
-                $_SESSION['usuario'] = $usuario; 
-                $_SESSION['estado'] = 'Autenticado';
+                $_SESSION['usuario'] = $nombre; 
+                $_SESSION['estado'] = 'autenticado';
                 header('location: home_admin.php');
             } else {
                 session_start();
-                $_SESSION['usuario'] = $usuario;
-                $_SESSION['estado'] = 'Autenticado';
+                $_SESSION['usuario'] = $nombre;
+                $_SESSION['estado'] = 'autenticado';
                 header('location: home.php');
             }
                 

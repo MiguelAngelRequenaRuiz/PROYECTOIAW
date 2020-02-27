@@ -40,7 +40,7 @@ body {
 
 .contenido {
   width: 250px;
-  height: 300px;
+  height: 350px;
   margin: 10px auto;
   background-color: rgba(255, 255, 255, 0.767);
   border: 1px solid #e6e6e6cb;
@@ -222,4 +222,36 @@ height: auto;
 }
 .cuerpo h1 {
   text-align: center;
+}
+
+/*
+home
+*/
+
+.pizqh {
+  width: 45%;
+  float: left;
+  text-align: center;
+}
+
+.pizqh img {
+  margin: 10% auto;
+  width: 300px;
+  height: 300px;
+}
+
+.pizqh table {
+  background-color: rgba(255, 255, 255, 0.767); 
+  border: 1px solid #e6e6e6cb; 
+  width:600px;
+}
+
+.pizqh th{
+  border: 1px solid #e6e6e6;
+  padding: 25px;
+  background-color: rgb(255, 255, 255);
+}
+
+.td1 {
+  border: 1px solid #e6e6e6;
 }

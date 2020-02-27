@@ -20,10 +20,8 @@
         <?php
             $nombre = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
             $correo = trim(htmlspecialchars($_REQUEST["correo"], ENT_QUOTES, "UTF-8"));
-
             $nombre_completo = trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8"));
             $contrasena_req = trim(htmlspecialchars($_REQUEST["contrasena"], ENT_QUOTES, "UTF-8"));
-            $contrasena = '';
             $contrasena_hash = hash('sha256',  $contrasena_req);
 
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 

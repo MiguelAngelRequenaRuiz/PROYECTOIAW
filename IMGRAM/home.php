@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,7 +13,7 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Tu galería</title>
   </head>
-  <body text="black">
+  <body>
   <div id="editdatos" class="modal fade" style="color: black">
 	<div class="modal-dialog modal-login">
 		<div class="modal-content">
@@ -75,7 +75,7 @@ session_start();
 					<tr>
 						<td>
 							<div class="form-group">
-                    			<label style="color: black" for="fechasubida" >Fecha: </label>
+                    			<label style="color: white" for="fechasubida" >Fecha: </label>
                     			<input type="date" class="form-control" name="fechasubida" id="fechasubida">
 							</div>
 						</td>
@@ -88,7 +88,7 @@ session_start();
 					<tr>
 						<td>
 							<div class="form-group">
-                    			<label style="color: black" for="idusufoto">Usuario: </label>
+                    			<label style="color: white" for="idusufoto">Usuario: </label>
                     			<select name="idusufoto" id="idusufoto" class="form-control">
 							</div> 
 								<option value=""></option>
