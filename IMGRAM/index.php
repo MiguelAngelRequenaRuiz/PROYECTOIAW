@@ -61,8 +61,9 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         </div>
         <div class="formulario">
             <form action="" method="post">
-              <input type="text" placeholder="Usuario" class="input" name="usuario" id="usuario" required />
-              <input type="password" placeholder="Contraseña" class="input" name="contrasena" id="contrasena" required/>
+						<input type="text" class="input" placeholder="Usuario" id="usuario" name="usuario" required="required">
+						<input type="password" class="input" placeholder="Contraseña" id="contrasena" name="contrasena" required="required">
+
               <?php 
                   if(isset($_GET['error'])) {
                     print "<p style='color: red'> $_REQUEST[error] </p>";
