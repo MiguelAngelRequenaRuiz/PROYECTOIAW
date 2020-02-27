@@ -22,7 +22,7 @@
             $contrasena_req = trim(htmlspecialchars($_REQUEST["contrasena"], ENT_QUOTES, "UTF-8"));
             $contrasena_hash = hash('sha256',  $contrasena_req);
 
-            $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
+            $conexion = mysqli_connect("localhost", "root", "", "requenasosa") 
             or die("Problemas en la conexion");
 
             $consulta = "SELECT nombre, contrasena FROM usuarios WHERE nombre='$nombre' AND contrasena='$contrasena_hash'";
