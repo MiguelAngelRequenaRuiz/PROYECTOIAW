@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-02-2020 a las 04:22:08
+-- Tiempo de generación: 29-02-2020 a las 12:51:11
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -33,22 +33,20 @@ CREATE TABLE `imagenes` (
   `nombre_usuario` varchar(30) NOT NULL,
   `fecha` varchar(15) NOT NULL,
   `imagen` text NOT NULL,
-  `ubicacion` text NOT NULL,
-  `ancho` text NOT NULL,
-  `alto` text NOT NULL
+  `ubicacion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `imagenes`
 --
 
-INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`, `ubicacion`, `ancho`, `alto`) VALUES
-(5, 'administrador', '2020-02-27', 'dadsasdads', '', '0', '0'),
-(6, 'administrador', '2020-02-27', 'adasadasdasd', '', '0', '0'),
-(8, 'pepe', '2020-02-27', 'sdadasdsadasdadssad', '', '0', '0'),
-(14, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_08_37.jpg', '0', '0'),
-(15, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_09_38.jpg', '', ''),
-(16, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_20_18.jpg', '', '');
+INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`, `ubicacion`) VALUES
+(5, 'administrador', '2020-02-27', 'dadsasdads', ''),
+(6, 'administrador', '2020-02-27', 'adasadasdasd', ''),
+(8, 'pepe', '2020-02-27', 'sdadasdsadasdadssad', ''),
+(16, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_20_18.jpg'),
+(17, '1234', '29-02-2020', 'View_Ilha_Grande', 'imagenes/1234/View_Ilha_Grande_29-02-2020_12_34_27.jpg'),
+(18, '1234', '29-02-2020', 'imagen2', 'imagenes/1234/imagen2_29-02-2020_12_39_37.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,7 +103,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

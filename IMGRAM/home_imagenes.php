@@ -20,10 +20,10 @@
                 $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
             }
             if (isset($_REQUEST["usuario"]) && !empty($_REQUEST["usuario"])) {
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, imagen, fecha FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
             } else {
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, imagen, fecha FROM imagenes ORDER BY fecha")
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes ORDER BY fecha")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
             }
 
@@ -32,7 +32,7 @@
             while ($reg = mysqli_fetch_array($registros)) {
                 echo "<tr>";
                     echo "<td class='td1'>" . $reg['nombre_usuario'] . "</td>";
-                    echo "<td class='td1'>" . "<img src='usuarios\\".$reg['nombre_usuario']."\\".$reg['imagen'].".jpg'/>" . "</td>";
+                    echo "<td class='td1'>" . "<img src='usuarios\\".$reg['nombre_usuario']."\\".$reg['ubicacion'].".jpg'/>" . "</td>";
                     echo "<td class='td1'>" . $reg['fecha'] . "</td>";
                 echo "</tr>";
             }

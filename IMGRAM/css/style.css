@@ -236,8 +236,8 @@ home
 
 .pizqh img {
   margin: 10% auto;
-  width: 300px;
-  height: 300px;
+  max-width: 300px ;
+  max-height: 300px ;
 }
 
 .pizqh table {
