@@ -30,13 +30,15 @@
                 }
 				?>
       </div>
+
       <div class="sobretexto">
         <input type="password" placeholder="Contraseña" class=entrada-reg id="contrasena" name="contrasena" required/>
       </div>
-      <button class="boton-reg">Registrarse</button>
+        <button class="boton-reg">Registrarse</button>
     </div>
     </form>
   </div>
+  
   <div class="bajotexto">
     <div class="s-parte">
       ¿Ya tienes una cuenta?
