@@ -15,7 +15,7 @@
     <div class="pizqh">
     <?php
             
-            $conexion = mysqli_connect("localhost", "root", "", "requenasosa") or die("Problemas con la conexión");
+            $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
             if (isset($_REQUEST["usuario"])) {
                 $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
             }
@@ -56,7 +56,7 @@
                 <select name="usuario" id="usuario" class="input"> 
                             <option value=""></option>
 							<?php
-								$conexion = mysqli_connect("localhost", "root", "", "requenasosa") 
+								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
 									or die("Problemas de conexion");
 
 								$registros = mysqli_query($conexion, "SELECT DISTINCT nombre_usuario FROM imagenes ORDER BY nombre_usuario")
