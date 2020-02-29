@@ -93,7 +93,7 @@ session_start();
 							</div> 
 								<option value=""></option>
 								<?php
-								$conexion = mysqli_connect("localhost", "root", "", "requenasosa") 
+								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
 									or die("Problemas de conexion");
 
 								$registros = mysqli_query($conexion, "SELECT DISTINCT usuario FROM fotos ORDER BY usuario")
