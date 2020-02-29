@@ -18,7 +18,7 @@
         </div>
 
         <div class="l-part">
-        
+
             <?php
                 $nombre = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
                 $correo = trim(htmlspecialchars($_REQUEST["correo"], ENT_QUOTES, "UTF-8"));
@@ -55,6 +55,3 @@
 </div>
 </body>
 </html>
-<?php
-
-?>
