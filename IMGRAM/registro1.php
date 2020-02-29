@@ -39,12 +39,14 @@
   </div>
   <div class="bajotexto">
     <div class="s-parte">
-      ¿Tienes una cuenta? <a href="index.php">
+      ¿Ya tienes una cuenta?
+       <a  href="index.php" style="text-decoration:none">
       </br> Entrar a tu perfil</a>
     </div>
   </div>
 
 </div>
 
+<footer id="footer">Diseñado por Christian Sosa y Miguel Requena</footer>
 </body>
 </html>

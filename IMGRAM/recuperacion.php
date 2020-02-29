@@ -19,17 +19,19 @@
         <form action="recuperacion_enviar.php" method="post" id="recuperacion" name="recuperacion">
                 <!--Esto envía un correo con los datos de la cuenta a los adminstradores de IMGRAM 
                     que son los que decidirán restablecer la contraseña-->
-        <div class="l-part">
-            <input type="email" placeholder="Correo electrónico" class=entrada-reg id="correo" name="correo" required/>
-        <div class="sobretexto">
-            <input type="text" placeholder="Nombre completo" class=entrada-reg id="nombre" name="nombre" required/>
-        </div>
-        <div class="sobretexto">
-            <input type="text" placeholder="Usuario" class=entrada-reg id="usuario" name="usuario" required/>
-        </div>
+            <div class="l-part">
+                <input type="email" placeholder="Correo electrónico" class=entrada-reg id="correo" name="correo" required/>
+            </div>
+            <div class="sobretexto">
+                <input type="text" placeholder="Nombre completo" class=entrada-reg id="nombre" name="nombre" required/>
+            </div>
+            <div class="sobretexto">
+                <input type="text" placeholder="Usuario" class=entrada-reg id="usuario" name="usuario" required/>
+            </div>
             <button class="boton-reg">Recuperar contraseña</button>
-        </div>
         </form>
     </div>
+</div>
+<footer id="footer">Diseñado por Christian Sosa y Miguel Requena</footer>
 </body>
 </html>
