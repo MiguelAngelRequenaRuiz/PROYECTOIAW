@@ -123,18 +123,19 @@ body {
   font-weight: 400;
 }
 
-/*
+
 .plataformas {
-  width: 350px;
-  height: 100%;
+  width: 555px;
+  height: 65px;
   position: relative;
 }
-*/
+
 .plataformas img{
   width: 350px;
   height: 60px;
+  margin-left: 210px;
 }
-*/
+
 #footer {
 font-family: 'Segoe UI', monospace;
 text-align: center;
