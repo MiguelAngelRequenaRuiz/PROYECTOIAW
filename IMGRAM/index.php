@@ -35,7 +35,8 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
                         }
                     ?>
                   <input type="submit" value="Entrar" class="boton-reg" name="entrar" style="margin-top: 10px;margin-bottom: 15px"/>
-                  <a href="recuperacion.php"></br>He olvidado mi contraseña</a>
+                  <a href="recuperacion.php" style="text-decoration:none; color: #3897f0;  text-align: center; font-family: 'Segoe UI', monospace; font-weight: 400;">
+                </br>He olvidado mi contraseña</a>
                 </form>
           
             <button type="submit" class="boton-reg" style="margin-top: 15px" OnClick="location.href='home_imagenes.php'">Entrar como invitado</button>
