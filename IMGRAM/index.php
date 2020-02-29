@@ -47,18 +47,21 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
         </div>
       </div>
+    
 
-      <div class="contenidobajo">
-        <div class="partebaja">
-          <p style="margin-left:25%" >¿Oye, no tienes cuenta? </br><a href="registro1.php">Regístrate gratis</a></p>
+      <div class="todoabajo">          
+        <div class="contenidobajo">
+          <div class="partebaja">
+            <p style="margin-left:25%" >¿Oye, no tienes cuenta? </br><a href="registro1.php">Regístrate gratis</a></p>
+          </div>
+        </div>
+                
+        <div class="plataformas">
+          <img src="imagenes/appstores.png">
         </div>
       </div>
-
-      <div class="plataformas">
-        <img src="imagenes/appstores.png">
-      </div>
-
     </div>
+    
 
   </div>
   <footer id="footer">Diseñado por Christian Sosa y Miguel Requena.</footer>
