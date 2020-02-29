@@ -13,8 +13,8 @@
   <div id="principal">
 
     <div class="pizqh">
+
     <?php
-            
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
             if (isset($_REQUEST["usuario"])) {
                 $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
@@ -28,11 +28,12 @@
             }
 
             echo "<table>";
+            echo "<tr><th colspan='3' style='font-size:25px'>Galeria</th></tr>";
             echo "<tr><th>Usuario</th><th>Foto</th><th>Fecha</th>";
             while ($reg = mysqli_fetch_array($registros)) {
                 echo "<tr>";
                     echo "<td class='td1'>" . $reg['nombre_usuario'] . "</td>";
-                    echo "<td class='td1'>" . "<img src='usuarios\\".$reg['nombre_usuario']."\\".$reg['ubicacion'].".jpg'/>" . "</td>";
+                    echo "<td class='td1'>" . "<img src='$reg[ubicacion]'/>" . "</td>";
                     echo "<td class='td1'>" . $reg['fecha'] . "</td>";
                 echo "</tr>";
             }
@@ -72,8 +73,14 @@
 
             <input type="submit" value="Buscar" class="boton-reg" name="buscar" style="margin-top: 10px;margin-bottom: 30px"/>
           </form>
-          <button type="submit" class="boton-reg" OnClick="location.href='index.php'">Volver</button>
-
+          <button type="submit" class="boton-reg" OnClick="<?php
+                  session_start();
+                  if (isset($_SESSION['usuario'])) {
+                    echo "location.href='home_usuario.php'";
+                  } else{
+                    echo "location.href='index.php'";
+                  }
+                ?>">Volver</button>
         </div>
       </div>
 

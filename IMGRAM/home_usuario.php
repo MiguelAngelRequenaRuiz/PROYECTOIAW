@@ -49,7 +49,8 @@
           <img src="imagenes/imgramlogo.png">
         </div>
         <div class="formulario">
-            <button type="submit" class="boton-reg" OnClick="location.href='cambiar_datos.php'" style="margin-bottom: 10px">Editar mi perfil</button>
+            <button type="submit" class="boton-reg" OnClick="location.href='home_imagenes.php'" style="margin-bottom: 20px">Galería</button>
+            <button type="submit" class="boton-reg" OnClick="location.href='cambiar_datos.php'" style="margin-bottom: 20px">Editar mi perfil</button>
             <form action="borrar_imagenes.php" method="post">
                 <h7>Seleccione la id para borrar la foto</h7>
                 <select name="id" id="id" class="input"> 
@@ -77,7 +78,7 @@
                 <input type="submit" value="Subir" class="boton-reg" name="Subir" style="margin-top: 10px;margin-bottom: 30px"/>
           </form>
 
-          <button type="submit" class="boton-reg" OnClick="location.href='index.php'">Cerrar sesión </br> ( <?php echo $usuario; ?> )</button>
+          <button type="submit" class="boton-reg" OnClick="location.href='logout.php'">Cerrar sesión </br> ( <?php echo $usuario; ?> )</button>
             
         </div>
       </div>
