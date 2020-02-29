@@ -54,8 +54,10 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
         </div>
       </div>
 
-      <div class="plataformas"><img src="imagenes/appstores.png"></div>
-      
+      <div class="plataformas">
+        <img src="imagenes/appstores.png">
+      </div>
+
     </div>
 
   </div>
