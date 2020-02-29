@@ -83,6 +83,6 @@
 
     
   </div>
-  <footer id="footer">Diseñado por Christian Sosa y Miguel Requena</footer>
+  <footer id="footer">Diseñado por Christian Sosa y Miguel Requena.</footer>
 </body>
 </html>
