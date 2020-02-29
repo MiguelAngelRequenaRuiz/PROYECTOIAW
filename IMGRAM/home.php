@@ -46,12 +46,13 @@ session_start();
 
 <div class="container" >
 			<div class="logo" style="position: relative; float: left; width: 300px">
-			<img src="imagenes/imgramlogo.png">
-		</div>
+				<img src="imagenes/imgramlogo.png">
+			</div>
 			<div style="position: relative; float: right; padding-left: 15px; padding-top: 15px; width: 150px">
 				<p>Usuario actual: <?php
-								print $_SESSION['usuario'];
-							?></p>
+										print $_SESSION['usuario'];
+									?>
+				</p>
 			</div>
 			<div style="position: relative; float: right; padding-top: 15px; width: 150px">
                 <a href="formfoto.php" class="btn btn-primary btn-lg">Subir foto</a>
@@ -59,7 +60,6 @@ session_start();
 			<div style="position: relative; float: right; padding-top: 15px; width: 150px">
                 <a href="logout.php" class="btn btn-primary btn-lg">Salir</a>
 			</div>
-
 			<div style="position: relative; float: right; padding-top: 15px; width: 150px"><a href="#editdatos" class="btn btn-primary btn-lg" data-toggle="modal">Editar perfil</a>           
 			 	<?php
                 if (isset($_REQUEST["error"])) {
@@ -68,82 +68,83 @@ session_start();
 				?>
 			</div>
 			
-			<div style="position: relative; clear: both">
+		<div style="position: relative; clear: both">
 			<br/><br/>
             <form action="home.php" method="post">
-			<table style="border: 0px"class="table">
-					<tr>
-						<td>
-							<div class="form-group">
-                    			<label style="color: white" for="fechasubida" >Fecha: </label>
-                    			<input type="date" class="form-control" name="fechasubida" id="fechasubida">
-							</div>
-						</td>
-						<td>
-							<div>
-                    			<input style="height: 70px; width: 300px; margin-right: -240px" type="submit" class="btn btn-primary btn-block" value="Buscar imágenes">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="form-group">
-                    			<label style="color: white" for="idusufoto">Usuario: </label>
-                    			<select name="idusufoto" id="idusufoto" class="form-control">
-							</div> 
+				<table style="border: 0px"class="table">
+						<tr>
+							<td>
+								<div class="form-group">
+        	            			<label style="color: white" for="fechasubida" >Fecha: </label>
+        	            			<input type="date" class="form-control" name="fechasubida" id="fechasubida">
+								</div>
+							</td>
+							<td>
+								<div>
+        	            			<input style="height: 70px; width: 300px; margin-right: -240px" type="submit" class="btn btn-primary btn-block" value="Buscar imágenes">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-group">
+                    				<label style="color: white" for="idusufoto">Usuario: </label>
+                    		<select name="idusufoto" id="idusufoto" class="form-control">
+								</div> 
+								
 								<option value=""></option>
 								<?php
-								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
-									or die("Problemas de conexion");
+									$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
+										or die("Problemas de conexion");
 
-								$registros = mysqli_query($conexion, "SELECT DISTINCT usuario FROM fotos ORDER BY usuario")
-									or die("Problemas en el select".mysqli_error($conexion));
+									$registros = mysqli_query($conexion, "SELECT DISTINCT usuario FROM fotos ORDER BY usuario")
+										or die("Problemas en el select".mysqli_error($conexion));
 
-								while ($reg = mysqli_fetch_array($registros)) {
-									echo "<option value='$reg[usuario]'>$reg[usuario]</option>";
-								}
-							?>
+									while ($reg = mysqli_fetch_array($registros)) {
+										echo "<option value='$reg[usuario]'>$reg[usuario]</option>";
+									}
+								?>
       						</select>
-						</td>
-						<td>
-							<div>
-                    			<input style="height: 75px" type="reset" class="btn btn-primary btn-block" value="Reiniciar">
-							</div>
-						</td>
-					</tr>
+							</td>
+							<td>
+								<div>
+                    				<input style="height: 75px" type="reset" class="btn btn-primary btn-block" value="Reiniciar">
+								</div>
+							</td>
+						</tr>
 				</table> 
 			</form>
 			
 
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "requenasosa") or die("Problemas con la conexión.");
-if (isset($_REQUEST["idusufoto"])) {
-	$autor = trim(htmlspecialchars($_REQUEST["idusufoto"], ENT_QUOTES, "UTF-8"));
-}
-if (isset($_REQUEST["idusufoto"]) && !empty($_REQUEST["idusufoto"])) {
-	$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes WHERE usuario='$autor'")
-    or die("Problemas en la consulta.".mysqli_error($conexion));
-} else {
-	$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes ORDER BY fecha")
-    or die("Problemas en la consulta.".mysqli_error($conexion));
-}
+	$conexion = mysqli_connect("localhost", "root", "", "requenasosa") or die("Problemas con la conexión.");
+		if (isset($_REQUEST["idusufoto"])) {
+		$autor = trim(htmlspecialchars($_REQUEST["idusufoto"], ENT_QUOTES, "UTF-8"));
+			}
+		if (isset($_REQUEST["idusufoto"]) && !empty($_REQUEST["idusufoto"])) {
+		$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes WHERE usuario='$autor'")
+    		or die("Problemas en la consulta.".mysqli_error($conexion));
+			} else {
+					$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes ORDER BY fecha")
+   						 or die("Problemas en la consulta.".mysqli_error($conexion));
+			}
 
-echo "<table class='table table-striped' style='background-color: white'>";
-echo "<tr><th>Usuario</th><th>Foto</th><th>Fecha</th>";
-while ($reg = mysqli_fetch_array($registros)) {
-    echo "<tr>";
-        echo "<td>" . $reg['usuario'] . "</td>";
-        echo "<td>" . "<img src='usuarios\\".$reg['usuario']."\\".$reg['id'].".jpg'/>" . "</td>";
-        echo "<td>" . $reg['fecha'] . "</td>";
-    echo "</tr>";
-}
-echo "</table>";
+	echo "<table class='table table-striped' style='background-color: white'>";
+	echo "<tr><th>Usuario</th><th>Foto</th><th>Fecha</th>";
+	while ($reg = mysqli_fetch_array($registros)) {
+    	echo "<tr>";
+     	echo "<td>" . $reg['usuario'] . "</td>";
+     	echo "<td>" . "<img src='usuarios\\".$reg['usuario']."\\".$reg['id'].".jpg'/>" . "</td>";
+     	echo "<td>" . $reg['fecha'] . "</td>";
+   		echo "</tr>";
+	}
+	echo "</table>";
                 
-mysqli_close($conexion);
+	mysqli_close($conexion);
 ?>
-</div>
-<a href="logout.php">Salir de la app.</a>
-</div>
+	</div>
+		<a href="logout.php">Salir de la app.</a>
+	</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

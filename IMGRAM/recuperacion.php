@@ -13,7 +13,7 @@
   
     <div class="cont-sec">
         <div class="cabecera-reg">
-        <img src="imagenes/imgramlogo.png" />
+            <img src="imagenes/imgramlogo.png" />
         </div>
 
         <form action="recuperacion_enviar.php" method="post" id="recuperacion" name="recuperacion">

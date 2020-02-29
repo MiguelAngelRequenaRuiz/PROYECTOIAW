@@ -13,7 +13,7 @@ session_start();
     <title>Tu galería</title>
   </head>
   <body text="black">
-  <div id="editdatos" class="modal fade" style="color: black">
+<div id="editdatos" class="modal fade" style="color: black">
 	<div class="modal-dialog modal-login">
 		<div class="modal-content">
 			<div class="modal-header">				
@@ -115,30 +115,30 @@ session_start();
 			
 
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "requenasosa") or die("Problemas con la conexión.");
-if (isset($_REQUEST["idusufoto"])) {
-	$autor = trim(htmlspecialchars($_REQUEST["idusufoto"], ENT_QUOTES, "UTF-8"));
-}
-if (isset($_REQUEST["idusufoto"]) && !empty($_REQUEST["idusufoto"])) {
-	$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes WHERE usuario='$autor'")
-    or die("Problemas en la consulta.".mysqli_error($conexion));
-} else {
-	$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes ORDER BY fecha")
-    or die("Problemas en la consulta.".mysqli_error($conexion));
-}
+	$conexion = mysqli_connect("localhost", "root", "", "requenasosa") or die("Problemas con la conexión.");
+	if (isset($_REQUEST["idusufoto"])) {
+		$autor = trim(htmlspecialchars($_REQUEST["idusufoto"], ENT_QUOTES, "UTF-8"));
+	}
+	if (isset($_REQUEST["idusufoto"]) && !empty($_REQUEST["idusufoto"])) {
+		$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes WHERE usuario='$autor'")
+  	  or die("Problemas en la consulta.".mysqli_error($conexion));
+	} else {
+		$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes ORDER BY fecha")
+  	  or die("Problemas en la consulta.".mysqli_error($conexion));
+	}
 
-echo "<table class='table table-striped' style='background-color: white'>";
-echo "<tr><th>Usuario</th><th>Foto</th><th>Fecha</th>";
-while ($reg = mysqli_fetch_array($registros)) {
-    echo "<tr>";
+	echo "<table class='table table-striped' style='background-color: white'>";
+	echo "<tr><th>Usuario</th><th>Foto</th><th>Fecha</th>";
+	while ($reg = mysqli_fetch_array($registros)) {
+   		echo "<tr>";
         echo "<td>" . $reg['usuario'] . "</td>";
         echo "<td>" . "<img src='usuarios\\".$reg['usuario']."\\".$reg['id'].".jpg'/>" . "</td>";
         echo "<td>" . $reg['fecha'] . "</td>";
-    echo "</tr>";
-}
-echo "</table>";
+    	echo "</tr>";
+	}
+	echo "</table>";
                 
-mysqli_close($conexion);
+	mysqli_close($conexion);
 ?>
 </div>
 <a href="logout.php">Salir de la app.</a>
