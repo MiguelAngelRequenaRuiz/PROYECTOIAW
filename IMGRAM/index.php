@@ -19,28 +19,29 @@ if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
 
     <div class="pizq"><img src="imagenes/iconomovil.png"></div>
 
-    <div class="pder">
+      <div class="pder">
 
-      <div class="contenido">
-        <div class="header">
+        <div class="contenido">
+          <div class="header">
           <img src="imagenes/imgramlogo.png">
-        </div>
-        <div class="formulario">
-            <form action="login.php" method="post">
-              <input type="text" placeholder="Usuario" class="input" name="usuario" id="usuario" required />
-              <input type="password" placeholder="Contraseña" class="input" name="contrasena" id="contrasena" required/>
-              <?php 
-                  if(isset($_GET['error'])) {
-                    print "<p style='color: red'> $_REQUEST[error] </p>";
-                  }
-              ?>
-            <input type="submit" value="Entrar" class="boton-reg" name="entrar" style="margin-top: 10px;margin-bottom: 15px"/>
-            <a href="recuperacion.php"></br>He olvidado mi contraseña</a>
-          </form>
-          <button type="submit" class="boton-reg" style="margin-top: 15px" OnClick="location.href='home_imagenes.php'">Entrar como invitado</button>
+          </div>
+              <div class="formulario">
+                <form action="login.php" method="post">
+                  <input type="text" placeholder="Usuario" class="input" name="usuario" id="usuario" required />
+                  <input type="password" placeholder="Contraseña" class="input" name="contrasena" id="contrasena" required/>
+                    <?php 
+                      if(isset($_GET['error'])) {
+                        print "<p style='color: red'> $_REQUEST[error] </p>";
+                        }
+                    ?>
+                  <input type="submit" value="Entrar" class="boton-reg" name="entrar" style="margin-top: 10px;margin-bottom: 15px"/>
+                  <a href="recuperacion.php"></br>He olvidado mi contraseña</a>
+                </form>
+          
+            <button type="submit" class="boton-reg" style="margin-top: 15px" OnClick="location.href='home_imagenes.php'">Entrar como invitado</button>
 
-        </div>
-      </div>
+          </div>
+         </div>
 
       <div class="contenidobajo">
         <div class="partebaja">
