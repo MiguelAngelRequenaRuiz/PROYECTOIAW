@@ -34,6 +34,10 @@
             if (mysqli_query($conexion, $insercion)) {
               echo "<p>"."El registro se ha realizado de forma exitosa"."</p>";
               echo "</br>";
+              $crearcarpeta = "imagenes/".$nombre."/";
+              if (!file_exists($crearcarpeta)) {
+                  mkdir($crearcarpeta, 0777, true);
+              }
             } else {
                 header('location: registro1.php?error=El usuario ya existe, elija otro por favor');
             }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2020 a las 19:04:50
+-- Tiempo de generación: 29-02-2020 a las 04:22:08
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -31,18 +31,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `imagenes` (
   `id` int(4) NOT NULL,
   `nombre_usuario` varchar(30) NOT NULL,
-  `fecha` date NOT NULL,
-  `imagen` text NOT NULL
+  `fecha` varchar(15) NOT NULL,
+  `imagen` text NOT NULL,
+  `ubicacion` text NOT NULL,
+  `ancho` text NOT NULL,
+  `alto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `imagenes`
 --
 
-INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`) VALUES
-(5, 'administrador', '2020-02-27', 'dadsasdads'),
-(6, 'administrador', '2020-02-27', 'adasadasdasd'),
-(8, 'pepe', '2020-02-27', 'sdadasdsadasdadssad');
+INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`, `ubicacion`, `ancho`, `alto`) VALUES
+(5, 'administrador', '2020-02-27', 'dadsasdads', '', '0', '0'),
+(6, 'administrador', '2020-02-27', 'adasadasdasd', '', '0', '0'),
+(8, 'pepe', '2020-02-27', 'sdadasdsadasdadssad', '', '0', '0'),
+(14, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_08_37.jpg', '0', '0'),
+(15, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_09_38.jpg', '', ''),
+(16, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_20_18.jpg', '', '');
 
 -- --------------------------------------------------------
 
@@ -67,7 +73,11 @@ INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `nombre_completo`, `contrasena
 (40, 'pepe', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
 (41, 'pepepep', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
 (42, 'administrador', 'admin@gmail.com', 'administrador', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(43, 'ANTONIO', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
+(43, 'ANTONIO', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(45, 'laura', 'uncorreobasura777@gmail.com', 'sagyasd', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(47, 'carpetaprueba', 'prueba@gmail.com', 'ddsddaad', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(48, 'a', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(49, '1234', 'prueba@gmail.com', 'admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
 
 --
 -- Índices para tablas volcadas
@@ -95,13 +105,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Restricciones para tablas volcadas

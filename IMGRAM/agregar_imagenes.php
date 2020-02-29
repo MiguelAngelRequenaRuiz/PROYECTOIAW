@@ -1,19 +1,13 @@
 <?php
     session_start();
     $usuario = $_SESSION['usuario'];
-    $id = trim(htmlspecialchars($_REQUEST["id"], ENT_QUOTES, "UTF-8"));
-    $fecha = date('Y-m-d');
-    $conexion = mysqli_connect("localhost", "root", "", "requenasosa")
-    or die("Problemas en la conexion.");
-
-    $consulta = "SELECT nombre FROM fotos WHERE usuario='$usuario'";
-
-    $inserfoto = "INSERT INTO fotos (id, fecha, usuario) VALUES ('$id', '$fecha', '$usuario')";
-
-    move_uploaded_file($_FILES["foto"]["tmp_name"], "usuarios\\".$usuario."\\".$id.".jpg");
-    if (is_uploaded_file($_FILES['foto']['tmp_name'])) {
-        mysqli_query($conexion, $inserfoto) or die(mysqli_error($conexion));
-    }
-    
-    header('location: usuario.php');
+    $fecha = date('d-m-Y');
+    $imagen = substr($_FILES["imagen"]["name"],0 ,strlen($_FILES["imagen"]["name"])-4);
+    $ubicacion = "imagenes/".$usuario."/".$imagen."_". date('d-m-Y_H_i_s'). ".jpg";
+    list($ancho, $alto, $tipo, $atributos) = getimagesize($_FILES["imagen"]);
+    $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
+    $insertar = "INSERT INTO imagenes (nombre_usuario, fecha, imagen, ubicacion, alto, ancho) VALUES ('$usuario', '$fecha', '$imagen', '$ubicacion', '$alto', '$ancho')";
+    move_uploaded_file($_FILES["imagen"]["tmp_name"], $ubicacion);
+    mysqli_query($conexion, $insertar) or die(mysqli_error($conexion));
+    header('location: home_usuario.php');
 ?>
