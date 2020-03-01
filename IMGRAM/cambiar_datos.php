@@ -19,8 +19,16 @@
     <?php
             
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
-            $usuario = $_SESSION['usuario'];
-
+            error_reporting(0);
+            if ($_SESSION['usuario'] == 'administrador') {
+                if ($usuario = $_REQUEST['usuario']){
+                } else {
+                    $usuario = $_GET['usu'];
+                }
+            } else {
+                $usuario = $_SESSION['usuario'];
+            }
+            
             $registros = mysqli_query($conexion, "SELECT nombre_completo, correo FROM usuarios WHERE nombre='$usuario'")
             or die("Problemas en la consulta:".mysqli_error($conexion));
 
@@ -44,35 +52,49 @@
         <div class="header" style="margin-bottom: 25px">
           <img src="imagenes/imgramlogo.png">
         </div>
+        
         <div class="formulario">
             <form action="cambio_nombre.php" method="post">
                 <h7>Nombre completo</h7>
+                <input type="hidden" name="usuario" value="<?php echo $usuario;?>" />
                 <input type="text" placeholder="Nuevo nombre" class=entrada-reg id="nombre" name="nombre" required/>
                 <input type="submit" value="Cambiar nombre" class="boton-reg" name="cambiar" style="margin-top: 10px;margin-bottom: 30px"/>
             </form>
             <form action="cambio_correo.php" method="post">
                 <h7>Correo electrónico</h7>
+                <input type="hidden" name="usuario" value="<?php echo $usuario;?>" />
                 <input type="email" placeholder="Nuevo correo" class=entrada-reg id="correo" name="correo" required/>
                 <input type="submit" value="Cambiar correo" class="boton-reg" name="cambiar" style="margin-top: 10px;margin-bottom: 30px"/>
             </form>
             <form action="cambio_contrasena.php" method="post">
                 <h7>Contraseña</h7>
-                <input type="password" placeholder="Anterior contraseña" class=entrada-reg id="contrasena_old" name="contrasena_old" required/>
+                <input type="hidden" name="usuario" value="<?php echo $usuario;?>" />
                 <input type="password" placeholder="Nueva contraseña" class=entrada-reg id="contrasena_new" name="contrasena_new" required/>
+                
                 <input type="submit" value="Cambiar contraseña" class="boton-reg" name="cambiar" style="margin-top: 10px;margin-bottom: 30px"/>
-                <?php 
-                if(isset($_GET['error'])) {
-                  print "<p style='color: red'> $_REQUEST[error] </p>";
-                }
-              ?>
             </form>
-          <button type="submit" class="boton-reg" OnClick="location.href='home_usuario.php'">Volver</button>
+            
+            <?php
+                if ($_SESSION['usuario'] != 'administrador') {
+                } else {
+                    echo "<form action='borrar_usuario.php?usu=".$usuario."' method='post'>";
+                    echo "<input type='hidden' name='usuario' value='".$usuario."'/>";
+                    echo "<input type='submit' value='Borrar el usuario: ".$usuario."' class='boton-reg' name='borrar' style='margin-bottom: 10px; background-color:#DF0101; border-color:#DF0101'/>";
+                    echo "</form>";
+                }
+            ?>
+
+
+          <button type="submit" class="boton-reg" OnClick="location.href=<?php
+            if ($_SESSION['usuario'] == 'administrador') {
+                echo "'"."home_admin.php"."'";
+            } else {
+                echo "'"."home_usuario.php"."'";
+            }?>">Volver</button>
             
         </div>
       </div>
-
       </div>
-
     </div>
 
   </div>

@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    $usuario = $_SESSION['usuario'];
+    $usuario = $_REQUEST["usuario"];
     $correo = trim(htmlspecialchars($_REQUEST["correo"], ENT_QUOTES, "UTF-8"));
 
     $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
@@ -8,8 +7,9 @@
 
     $actualizacion = "UPDATE usuarios SET correo='$correo' WHERE nombre = '$usuario'";
         mysqli_query($conexion, $actualizacion) or die(mysqli_error($conexion));
-        header('location: cambiar_datos.php');
+        header('location: cambiar_datos.php?usu='.$usuario);
 
     mysqli_close($conexion);
 
 ?>
+

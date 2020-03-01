@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	$usuario = $_SESSION['usuario'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,31 +52,12 @@
 
     <div class="pder">
 
-      <div class="contenido">
+      <div class="contenido" style="height: 600px">
         <div class="header" style="margin-bottom: 25px">
           <img src="imagenes/imgramlogo.png">
         </div>
         <div class="formulario">
-		<form action="borrar_imagenes.php" method="post">
-                <h7>Seleccione la id para borrar la foto</h7>
-                <select name="id" id="id" class="input"> 
-                    <option value=""></option>
-					<?php
-							$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
-								or die("Problemas de conexion");
-
-							$registros = mysqli_query($conexion, "SELECT id FROM imagenes ORDER BY fecha")
-								or die("Problemas en el select".mysqli_error($conexion));
-
-							while ($reg = mysqli_fetch_array($registros)) {
-							echo "<option value='$reg[id]'>$reg[id]</option>";
-						}
-              		?>   
-      		    </select>
-            <input type="submit" value="Borrar" class="boton-reg" name="borrar" style="margin-top: 10px;margin-bottom: 30px"/>
-          </form>
-
-            <form action="home_admin.php" method="post">
+		<form action="home_admin.php" method="post">
                 <h7>Filtro de búsqueda</h7>
                 <select name="usuario" id="usuario" class="input"> 
                             <option value=""></option>
@@ -92,16 +77,48 @@
               <input type="date" name="fecha" id="fecha" class="input"/>
 
             <input type="submit" value="Buscar" class="boton-reg" name="buscar" style="margin-top: 10px;margin-bottom: 30px"/>
-          </form>
-          <button type="submit" class="boton-reg" OnClick="<?php
-                  session_start();
-                  if (isset($_SESSION['usuario'])) {
-                    echo "location.href='home_usuario.php'";
-                  } else{
-                    echo "location.href='index.php'";
-                  }
-                ?>">Volver</button>
-        </div>
+		</form>
+	
+		<form action="borrar_imagenes.php" method="post">
+                <h7>Seleccione la id para borrar la foto</h7>
+                <select name="id" id="id" class="input"> 
+                    <option value=""></option>
+					<?php
+							$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
+								or die("Problemas de conexion");
+
+							$registros = mysqli_query($conexion, "SELECT id FROM imagenes ORDER BY fecha")
+								or die("Problemas en el select".mysqli_error($conexion));
+
+							while ($reg = mysqli_fetch_array($registros)) {
+							echo "<option value='$reg[id]'>$reg[id]</option>";
+						}
+              		?>   
+      		    </select>
+            <input type="submit" value="Borrar" class="boton-reg" name="borrar" style="margin-top: 10px;margin-bottom: 30px"/>
+		  </form>
+		  <form action="cambiar_datos.php" method="post">
+                <h7>Cambiar los datos del usuario:</h7>
+                <select name="usuario" id="usuario" class="input" required> 
+							<?php
+								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
+									or die("Problemas de conexion");
+
+								$registros = mysqli_query($conexion, "SELECT DISTINCT nombre FROM usuarios")
+									or die("Problemas en el select".mysqli_error($conexion));
+
+								while ($reg = mysqli_fetch_array($registros)) {
+									echo "<option value='$reg[nombre]'>$reg[nombre]</option>";
+								}
+                            ?>
+      		    </select>
+            <input type="submit" value="Cambiar" class="boton-reg" name="Cambiar" style="margin-top: 10px;margin-bottom: 30px"/>
+		</form>
+
+		  <button type="submit" class="boton-reg" OnClick="location.href='logout.php'">Cerrar sesión </br> ( <?php echo $usuario; ?> )</button>
+			
+		</div>
+		
       </div>
 
       </div>

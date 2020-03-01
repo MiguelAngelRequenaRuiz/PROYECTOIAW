@@ -15,5 +15,10 @@
             echo false;
         }
     }
-    header('location: home_usuario.php');
+    if ($_SESSION['usuario'] == 'administrador') {
+        header('location: home_admin.php');
+    } else {
+        header('location: home_usuario.php');
+    }
+
 ?>

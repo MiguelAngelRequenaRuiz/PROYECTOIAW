@@ -65,7 +65,7 @@
 								while ($reg = mysqli_fetch_array($registros)) {
 									echo "<option value='$reg[id]'>$reg[id]</option>";
 								}
-                            ?>
+              ?>
                             
       		    </select>
 
