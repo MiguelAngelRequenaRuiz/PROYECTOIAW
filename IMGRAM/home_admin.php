@@ -1,153 +1,115 @@
-<?php 
-session_start();
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <title>IMGram</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  
+</head>
+ 
+<body>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Tu galería</title>
-  </head>
-  <body text="black">
-<div id="editdatos" class="modal fade" style="color: black">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-			<div class="modal-header">				
-				<h4 class="modal-title">Editar perfil</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="editardatos.php" method="post">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Usuario" id="usuario" name="usuario" value="<?php 
-								session_start();
-								print $_SESSION['usuario'];
-							?>" required="required">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Contraseña" id="contrasena" name="contrasena" required="required">
-					</div>
-					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Email" id="correo" name="correo" required="required">
-					</div>
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Iniciar Sesión">
-					</div>
-				</form>			
-			</div>
-		</div>
-	</div>
-</div> 
+  <div id="principal">
 
-<div class="container" >
-			<div class="logo" style="position: relative; float: left; width: 300px">
-			<img src="imagenes/imgramlogo.png">
-		</div>
-			<div style="position: relative; float: right; padding-left: 15px; padding-top: 15px; width: 150px">
-				<p>Usuario actual: <?php
-								print $_SESSION['usuario'];
-							?></p>
-			</div>
-			<div style="position: relative; float: right; padding-top: 15px; width: 150px">
-                <a href="formfoto.php" class="btn btn-primary btn-lg">Subir foto</a>
-			</div>
-			<div style="position: relative; float: right; padding-top: 15px; width: 150px">
-                <a href="logout.php" class="btn btn-primary btn-lg">Salir</a>
-			</div>
+    <div class="pizqh">
 
-			<div style="position: relative; float: right; padding-top: 15px; width: 150px"><a href="#editdatos" class="btn btn-primary btn-lg" data-toggle="modal">Editar perfil</a>           
-			 	<?php
-                if (isset($_REQUEST["error"])) {
-                    print "<p style='color: red'> $_REQUEST[error] </p>";
-                }
-				?>
-			</div>
-			
-			<div style="position: relative; clear: both">
-			<br/><br/>
+    <?php
+            $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
+            if (isset($_REQUEST["usuario"])) {
+                $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
+            }
+            if (isset($_REQUEST["usuario"]) && !empty($_REQUEST["usuario"])) {
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
+                or die("Problemas en la consulta:".mysqli_error($conexion));
+            } else {
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes ORDER BY fecha")
+                or die("Problemas en la consulta:".mysqli_error($conexion));
+            }
+
+            echo "<table>";
+            echo "<tr><th colspan='4' style='font-size:25px'>Galeria</th></tr>";
+            echo "<tr><th>Usuario</th><th>Foto</th><th>Id</th><th>Fecha</th>";
+            while ($reg = mysqli_fetch_array($registros)) {
+                echo "<tr>";
+                    echo "<td class='td1'>" . $reg['nombre_usuario'] . "</td>";
+					echo "<td class='td1'>" . "<img src='$reg[ubicacion]'/>" . "</td>";
+                    echo "<td class='td1'>" . $reg['id'] . "</td>";
+                    echo "<td class='td1'>" . $reg['fecha'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+                            
+            mysqli_close($conexion);
+            
+    ?> 
+
+    </div>
+
+    <div class="pder">
+
+      <div class="contenido">
+        <div class="header" style="margin-bottom: 25px">
+          <img src="imagenes/imgramlogo.png">
+        </div>
+        <div class="formulario">
+		<form action="borrar_imagenes.php" method="post">
+                <h7>Seleccione la id para borrar la foto</h7>
+                <select name="id" id="id" class="input"> 
+                    <option value=""></option>
+					<?php
+							$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
+								or die("Problemas de conexion");
+
+							$registros = mysqli_query($conexion, "SELECT id FROM imagenes ORDER BY fecha")
+								or die("Problemas en el select".mysqli_error($conexion));
+
+							while ($reg = mysqli_fetch_array($registros)) {
+							echo "<option value='$reg[id]'>$reg[id]</option>";
+						}
+              		?>   
+      		    </select>
+            <input type="submit" value="Borrar" class="boton-reg" name="borrar" style="margin-top: 10px;margin-bottom: 30px"/>
+          </form>
+
             <form action="home_admin.php" method="post">
-			<table style="border: 0px"class="table">
-					<tr>
-						<td>
-							<div class="form-group">
-                    			<label style="color: black" for="fechasubida" >Fecha: </label>
-                    			<input type="date" class="form-control" name="fechasubida" id="fechasubida">
-							</div>
-						</td>
-						<td>
-							<div>
-                    			<input style="height: 70px; width: 300px; margin-right: -240px" type="submit" class="btn btn-primary btn-block" value="Buscar imágenes">
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="form-group">
-                    			<label style="color: black" for="idusufoto">Usuario: </label>
-                    			<select name="idusufoto" id="idusufoto" class="form-control">
-							</div> 
-								<option value=""></option>
-								<?php
-								$conexion = mysqli_connect("localhost", "root", "", "requenasosa") 
+                <h7>Filtro de búsqueda</h7>
+                <select name="usuario" id="usuario" class="input"> 
+                            <option value=""></option>
+							<?php
+								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
 									or die("Problemas de conexion");
 
-								$registros = mysqli_query($conexion, "SELECT DISTINCT usuario FROM fotos ORDER BY usuario")
+								$registros = mysqli_query($conexion, "SELECT DISTINCT nombre_usuario FROM imagenes ORDER BY nombre_usuario")
 									or die("Problemas en el select".mysqli_error($conexion));
 
 								while ($reg = mysqli_fetch_array($registros)) {
-									echo "<option value='$reg[usuario]'>$reg[usuario]</option>";
+									echo "<option value='$reg[nombre_usuario]'>$reg[nombre_usuario]</option>";
 								}
-							?>
-      						</select>
-						</td>
-						<td>
-							<div>
-                    			<input style="height: 75px" type="reset" class="btn btn-primary btn-block" value="Reiniciar">
-							</div>
-						</td>
-					</tr>
-				</table> 
-			</form>
-			
+                            ?>
+                            
+      		    </select>
+              <input type="date" name="fecha" id="fecha" class="input"/>
 
-<?php
-	$conexion = mysqli_connect("localhost", "root", "", "requenasosa") or die("Problemas con la conexión.");
-	if (isset($_REQUEST["idusufoto"])) {
-		$autor = trim(htmlspecialchars($_REQUEST["idusufoto"], ENT_QUOTES, "UTF-8"));
-	}
-	if (isset($_REQUEST["idusufoto"]) && !empty($_REQUEST["idusufoto"])) {
-		$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes WHERE usuario='$autor'")
-  	  or die("Problemas en la consulta.".mysqli_error($conexion));
-	} else {
-		$registros = mysqli_query($conexion, "SELECT usuario, id, fecha FROM imagenes ORDER BY fecha")
-  	  or die("Problemas en la consulta.".mysqli_error($conexion));
-	}
+            <input type="submit" value="Buscar" class="boton-reg" name="buscar" style="margin-top: 10px;margin-bottom: 30px"/>
+          </form>
+          <button type="submit" class="boton-reg" OnClick="<?php
+                  session_start();
+                  if (isset($_SESSION['usuario'])) {
+                    echo "location.href='home_usuario.php'";
+                  } else{
+                    echo "location.href='index.php'";
+                  }
+                ?>">Volver</button>
+        </div>
+      </div>
 
-	echo "<table class='table table-striped' style='background-color: white'>";
-	echo "<tr><th>Usuario</th><th>Foto</th><th>Fecha</th>";
-	while ($reg = mysqli_fetch_array($registros)) {
-   		echo "<tr>";
-        echo "<td>" . $reg['usuario'] . "</td>";
-        echo "<td>" . "<img src='usuarios\\".$reg['usuario']."\\".$reg['id'].".jpg'/>" . "</td>";
-        echo "<td>" . $reg['fecha'] . "</td>";
-    	echo "</tr>";
-	}
-	echo "</table>";
-                
-	mysqli_close($conexion);
-?>
-</div>
-<a href="logout.php">Salir de la app.</a>
-</div>
+      </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+    </div>
+
+    
+  </div>
+  <footer id="footer">Diseñado por Christian Sosa y Miguel Requena.</footer>
+</body>
 </html>
