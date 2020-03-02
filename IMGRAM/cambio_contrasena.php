@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	if (isset($_SESSION['usuario'])){
+    } else {
+		header('location: 403.html');
+	}
     $usuario = $_REQUEST["usuario"];
 
     $contrasena_req_new = trim(htmlspecialchars($_REQUEST["contrasena_new"], ENT_QUOTES, "UTF-8"));
@@ -8,7 +13,7 @@
         or die("Problemas en la conexion");
 
     $actualizacion = "UPDATE usuarios SET contrasena='$contrasena_hash_new' WHERE nombre = '$usuario'";
-    
+
         mysqli_query($conexion, $actualizacion) or die(mysqli_error($conexion));
         header('location: cambiar_datos.php?usu='.$usuario);
 

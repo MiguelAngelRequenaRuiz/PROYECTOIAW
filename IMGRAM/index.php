@@ -1,8 +1,12 @@
 <?php
-session_start();
-if(isset($_SESSION['online']) && $_SESSION['online'] == TRUE) {
-  header("Location: home.php");
-}
+	session_start();
+	if (isset($_SESSION['usuario'])){
+    $usuario = $_SESSION['usuario'];
+    
+    } else {
+		header('location: 403.html');
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

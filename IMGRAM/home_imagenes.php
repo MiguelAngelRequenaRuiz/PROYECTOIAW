@@ -19,12 +19,28 @@
             if (isset($_REQUEST["usuario"])) {
                 $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
             }
-            if (isset($_REQUEST["usuario"]) && !empty($_REQUEST["usuario"])) {
+            if (isset($_REQUEST["fecha"])) {
+                $fecha = $_REQUEST["fecha"];
+            }
+            if (!empty($_REQUEST["fecha"]) && !empty($_REQUEST["usuario"])) {
+              $fecha_array = explode("-",$fecha);
+              $fecha = $fecha_array[2]."-".$fecha_array[1]."-".$fecha_array[0];
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' AND fecha='$fecha'")
+                or die("Problemas en la consulta:".mysqli_error($conexion));
+
+            } elseif (!empty($_REQUEST["fecha"]) && empty($_REQUEST["usuario"])) {
+                $fecha_array = explode("-",$fecha);
+                $fecha = $fecha_array[2]."-".$fecha_array[1]."-".$fecha_array[0];
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE fecha='$fecha'")
+                or die("Problemas en la consulta:".mysqli_error($conexion));
+
+            } elseif (empty($_REQUEST["fecha"]) && !empty($_REQUEST["usuario"])) {
                 $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
+
             } else {
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes ORDER BY fecha")
-                or die("Problemas en la consulta:".mysqli_error($conexion));
+              $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes ORDER BY fecha")
+              or die("Problemas en la consulta:".mysqli_error($conexion));
             }
 
             echo "<table>";
@@ -38,7 +54,7 @@
                 echo "</tr>";
             }
             echo "</table>";
-                            
+
             mysqli_close($conexion);
             
     ?> 
@@ -57,7 +73,7 @@
                 <select name="usuario" id="usuario" class="input"> 
                             <option value=""></option>
 							<?php
-								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") 
+								$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa")
 									or die("Problemas de conexion");
 
 								$registros = mysqli_query($conexion, "SELECT DISTINCT nombre_usuario FROM imagenes ORDER BY nombre_usuario")
@@ -66,8 +82,7 @@
 								while ($reg = mysqli_fetch_array($registros)) {
 									echo "<option value='$reg[nombre_usuario]'>$reg[nombre_usuario]</option>";
 								}
-                            ?>
-                            
+                      ?>
       		    </select>
               <input type="date" name="fecha" id="fecha" class="input"/>
 

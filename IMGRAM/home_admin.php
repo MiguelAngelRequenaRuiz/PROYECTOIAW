@@ -1,6 +1,11 @@
 <?php
 	session_start();
-	$usuario = $_SESSION['usuario'];
+	if (isset($_SESSION['usuario'])){
+		$usuario = $_SESSION['usuario'];
+    } else {
+		header('location: 403.html');
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,16 +24,32 @@
     <div class="pizqh">
 
     <?php
-            $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
+			$conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
             if (isset($_REQUEST["usuario"])) {
                 $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
             }
-            if (isset($_REQUEST["usuario"]) && !empty($_REQUEST["usuario"])) {
+            if (isset($_REQUEST["fecha"])) {
+                $fecha = $_REQUEST["fecha"];
+            }
+            if (!empty($_REQUEST["fecha"]) && !empty($_REQUEST["usuario"])) {
+              $fecha_array = explode("-",$fecha);
+              $fecha = $fecha_array[2]."-".$fecha_array[1]."-".$fecha_array[0];
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes WHERE nombre_usuario='$usuario' AND fecha='$fecha'")
+                or die("Problemas en la consulta:".mysqli_error($conexion));
+
+            } elseif (!empty($_REQUEST["fecha"]) && empty($_REQUEST["usuario"])) {
+                $fecha_array = explode("-",$fecha);
+                $fecha = $fecha_array[2]."-".$fecha_array[1]."-".$fecha_array[0];
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes WHERE fecha='$fecha'")
+                or die("Problemas en la consulta:".mysqli_error($conexion));
+
+            } elseif (empty($_REQUEST["fecha"]) && !empty($_REQUEST["usuario"])) {
                 $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
+
             } else {
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes ORDER BY fecha")
-                or die("Problemas en la consulta:".mysqli_error($conexion));
+              $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes ORDER BY fecha")
+              or die("Problemas en la consulta:".mysqli_error($conexion));
             }
 
             echo "<table>";

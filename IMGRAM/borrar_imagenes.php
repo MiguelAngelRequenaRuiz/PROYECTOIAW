@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (isset($_SESSION['usuario'])){
+    } else {
+        header('location: 403.html');
+    }
     $id =$_REQUEST["id"];
     $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa")
     or die("Problemas en la conexion");

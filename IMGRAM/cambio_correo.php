@@ -1,4 +1,9 @@
 <?php
+    session_start();
+	if (isset($_SESSION['usuario'])){
+    } else {
+		header('location: 403.html');
+	}
     $usuario = $_REQUEST["usuario"];
     $correo = trim(htmlspecialchars($_REQUEST["correo"], ENT_QUOTES, "UTF-8"));
 

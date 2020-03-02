@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (isset($_SESSION['usuario'])){
+    } else {
+        header('location: 403.html');
+    }
     $usuario = $_SESSION['usuario'];
     $fecha = date('d-m-Y');
     $imagen = substr($_FILES["imagen"]["name"],0 ,strlen($_FILES["imagen"]["name"])-4);

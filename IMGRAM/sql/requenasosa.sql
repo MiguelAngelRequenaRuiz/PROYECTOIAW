@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-02-2020 a las 12:51:11
+-- Tiempo de generación: 01-03-2020 a las 23:33:51
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -36,18 +36,6 @@ CREATE TABLE `imagenes` (
   `ubicacion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `imagenes`
---
-
-INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`, `ubicacion`) VALUES
-(5, 'administrador', '2020-02-27', 'dadsasdads', ''),
-(6, 'administrador', '2020-02-27', 'adasadasdasd', ''),
-(8, 'pepe', '2020-02-27', 'sdadasdsadasdadssad', ''),
-(16, '1234', '29-02-2020', 'imagen', 'imagenes/1234/imagen_29-02-2020_04_20_18.jpg'),
-(17, '1234', '29-02-2020', 'View_Ilha_Grande', 'imagenes/1234/View_Ilha_Grande_29-02-2020_12_34_27.jpg'),
-(18, '1234', '29-02-2020', 'imagen2', 'imagenes/1234/imagen2_29-02-2020_12_39_37.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -67,15 +55,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `nombre_completo`, `contrasena`) VALUES
-(39, 'prueba', 'admin@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(40, 'pepe', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(41, 'pepepep', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(42, 'administrador', 'admin@gmail.com', 'administrador', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(43, 'ANTONIO', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(45, 'laura', 'uncorreobasura777@gmail.com', 'sagyasd', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(47, 'carpetaprueba', 'prueba@gmail.com', 'ddsddaad', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(48, 'a', 'prueba@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(49, '1234', 'prueba@gmail.com', 'admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
+(42, 'administrador', 'admin@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
 
 --
 -- Índices para tablas volcadas
@@ -103,7 +83,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

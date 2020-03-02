@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if (isset($_SESSION['usuario'])){
+    } else {
+        header('location: 403.html');
+    }
+    
     $usuario = $_GET['usu'];
 
     $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa")

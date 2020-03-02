@@ -1,5 +1,9 @@
 <?php
-    session_start()
+    session_start();
+    if (isset($_SESSION['usuario'])){
+    } else {
+        header('location: 403.html');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,7 +21,6 @@
 
     <div class="pizq">
     <?php
-            
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
             error_reporting(0);
             if ($_SESSION['usuario'] == 'administrador') {

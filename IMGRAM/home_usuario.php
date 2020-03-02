@@ -1,5 +1,11 @@
 <?php
-    session_start()
+	session_start();
+	if (isset($_SESSION['usuario'])){
+		$usuario = $_SESSION['usuario'];
+    } else {
+		header('location: 403.html');
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
