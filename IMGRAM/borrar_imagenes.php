@@ -13,12 +13,6 @@
     $registros = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
     $reg = mysqli_fetch_array($registros);
     $ubicacion= $reg['ubicacion'];
-    if (is_file($ubicacion)) {
-        chmod($ubicacion, 0777);
-        if (!unlink($ubicacion)) {
-            echo false;
-        }
-    }
     if ($_SESSION['usuario'] == 'administrador') {
         header('location: home_admin.php');
     } else {
