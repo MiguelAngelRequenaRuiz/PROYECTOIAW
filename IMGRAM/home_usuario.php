@@ -27,7 +27,7 @@
             $conexion = mysqli_connect("localhost", "admin", "1234", "requenasosa") or die("Problemas con la conexión");
             $usuario = $_SESSION['usuario'];
 
-            $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
+            $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha, id FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY id DESC")
             or die("Problemas en la consulta:".mysqli_error($conexion));
 
             echo "<table>";

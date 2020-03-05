@@ -25,21 +25,21 @@
             if (!empty($_REQUEST["fecha"]) && !empty($_REQUEST["usuario"])) {
               $fecha_array = explode("-",$fecha);
               $fecha = $fecha_array[2]."-".$fecha_array[1]."-".$fecha_array[0];
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' AND fecha='$fecha'")
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' AND fecha='$fecha' ORDER BY id DESC")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
 
             } elseif (!empty($_REQUEST["fecha"]) && empty($_REQUEST["usuario"])) {
                 $fecha_array = explode("-",$fecha);
                 $fecha = $fecha_array[2]."-".$fecha_array[1]."-".$fecha_array[0];
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE fecha='$fecha'")
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE fecha='$fecha' ORDER BY id DESC")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
 
             } elseif (empty($_REQUEST["fecha"]) && !empty($_REQUEST["usuario"])) {
-                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY fecha")
+                $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes WHERE nombre_usuario='$usuario' ORDER BY id DESC")
                 or die("Problemas en la consulta:".mysqli_error($conexion));
 
             } else {
-              $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes ORDER BY fecha")
+              $registros = mysqli_query($conexion, "SELECT nombre_usuario, ubicacion, fecha FROM imagenes ORDER BY id DESC")
               or die("Problemas en la consulta:".mysqli_error($conexion));
             }
 

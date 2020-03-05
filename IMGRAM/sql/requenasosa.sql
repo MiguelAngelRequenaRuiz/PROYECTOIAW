@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2020 a las 23:33:51
+-- Tiempo de generación: 05-03-2020 a las 12:19:38
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -36,6 +36,21 @@ CREATE TABLE `imagenes` (
   `ubicacion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id`, `nombre_usuario`, `fecha`, `imagen`, `ubicacion`) VALUES
+(42, 'miguel', '05-03-2020', 'meme1', 'imagenes/miguel/meme1_05-03-2020_11_04_02.jpg'),
+(43, 'miguel', '05-03-2020', 'meme2', 'imagenes/miguel/meme2_05-03-2020_11_04_36.jpg'),
+(44, 'miguel', '05-03-2020', 'meme3', 'imagenes/miguel/meme3_05-03-2020_11_05_30.jpg'),
+(45, 'christian', '05-03-2020', 'meme3', 'imagenes/christian/meme3_05-03-2020_12_09_13.jpg'),
+(46, 'christian', '05-03-2020', 'meme2', 'imagenes/christian/meme2_05-03-2020_12_09_16.jpg'),
+(47, 'christian', '05-03-2020', 'meme1', 'imagenes/christian/meme1_05-03-2020_12_09_19.jpg'),
+(48, 'pepe', '05-03-2020', 'meme2', 'imagenes/pepe/meme2_05-03-2020_12_10_38.jpg'),
+(49, 'pepe', '05-03-2020', 'meme1', 'imagenes/pepe/meme1_05-03-2020_12_10_40.jpg'),
+(50, 'pepe', '05-03-2020', 'meme3', 'imagenes/pepe/meme3_05-03-2020_12_10_43.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +70,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `nombre_completo`, `contrasena`) VALUES
-(42, 'administrador', 'admin@gmail.com', 'prueba prueba', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
+(1, 'administrador', 'admin@gmail.com', 'administrador IMGRAM', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(2, 'miguel', 'miguel@gmail.com', 'Miguel Ángel', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(3, 'christian', 'christian@gmail.com', 'Christian Sosa', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(4, 'pepe', 'pepe@gmail.com', 'pepe perez', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(5, 'antonio', 'antonio@gmail.com', 'Antonio Cruz', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
 
 --
 -- Índices para tablas volcadas
@@ -83,13 +102,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
